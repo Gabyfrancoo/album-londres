@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Àlbum detalhes</title>
+    <link rel="stylesheet" href="assets/css.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+<!-- cabeÃ§alho + logo + links -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel in London</title>
+    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#">Travel in London</a>
+        <nav>
+            <input type="checkbox" id="menuToggle">
+            <label for="menuToggle" class="menu-icon">
+                <i class="fa fa-bars"></i>
+                <i class="fa fa-times-circle"></i>
+            </label>
+            <ul class="menu">
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="album.html">Àlbum destaque</a></li>
+                <li> <a href="item.html">Item</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<body>
+
+    
+    <div class="col-10 mx-auto">
+        <h3 class="topic-division">àlbum Big Ben</h3>
+    </div>
+
+    <div class="col-10">
+        <div class="container mx-auto row">
+            <img src="assets/css/lista1.jpg" alt="Capa do Album" class="img-thumbnail thumbnailF">
+            <div class="ml-3">
+
+                <h5>Descrição</h5>
+
+                <p>O  Big Ben na verdade é o nome do sino que fica dentro da torre.</p>
+
+                <div class="p-0 d-flex col-12">
+                    <h5>Localização: &nbsp</h5>
+                    <p>London SW1A 0AA, Reino Unido</p>
+
+                    <h5 class="ml-3">Data do registro:&nbsp</h5>
+                    <p>29/09/2023</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { width: 100%; height: 350px;; }
+    </style>
+</head>
+<body>
+    <!-- DIV que receberá o mapa -->
+    <div id="map"></div>
+
+    <script>
+        // ----------------------------------------------
+        // Cria uma estrutura de dados com informações das unidades da PUC Minas 
+        let Albuns = [
+            
+                {
+                  id: 4,
+                  nome: "Big Ben",
+                  cidade: "Londres",
+                  descricao:"O nome real do edifício é Elizabeth Tower, é em homenagem ao jubileu de diamante da falecida rainha Elizabeth II.",
+                  img: "img/album/10.jpg",
+                  localizacao:[51.5007, -0.1246],
+                  Data: "21/11/23",
+                },
+                
+              ]
+            
+
+        // --------------------------------------------------
+        // Cria o mapa baseado na API Mapbox e adiciona no 
+        // elemento de id: map        
+        // --------------------------------------------------
+
+        // ----------------------------------------------
+        // Cria o mapa e adiciona no elemento de id: map 
+        const centralLatLong= [51.509865, -0.118092]
+
+        // ----------------------------------------------
+        // IMPORTANTE: Crie uma conta no Mapbox e adicione  
+        // sua accessToken na linha abaixo
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FieWZyYW5jbyIsImEiOiJjbHBwd3VsZzcxMTQ5MnFwZ2d3MnUzNHpoIn0._MpOWorJS_7DWF36jyIlXQ';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: centralLatLong,
+            zoom: 10
+        });
+
+
+        // ----------------------------------------------
+        // Adiciona marcadores para unidades da PUC Minas
+        Albuns.forEach (uni => {
+            let popup = new mapboxgl.Popup({ offset: 25 })
+                .setHTML(`<h3>${uni.nome}</h3>
+                <br>${uni.descricao} <br> ${uni.cidade}`);
+       const marker = new mapboxgl.Marker({ color: 'pink' })
+                .setLngLat(uni.localizacao)
+                .setPopup(popup)
+                .addTo(map);     
+        }) ;
+      
+    </script>
+
+
+<!-- Mapa fim -->
+
+    <div class="col-10 mx-auto">
+        <h3 class="topic-division">Itens (fotos/ví­deos)</h3>
+    </div>
+
+    <!-- FOTOS LAYOUT-->
+
+    <div class="grid">
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/5.jpg">
+            <div class="card-body">
+                <h5 class="card-title">London Eye</h5>
+                <p class="card-text">Conta com mais de 85 prÃªmios turí­sticos.</p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/8.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Tower Bridge</h5>
+                <p class="card-text">uma ponte levadiça que na época era a mais sofisticada do mundo.</p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/1.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Abadia de Westminster</h5>
+                <p class="card-text">A Abadia de Westminster, o local onde acontece as coroações e onde acontece o velÃ³rio dos monarcas.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/10.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Big Ben</h5>
+                <p class="card-text">O nome real do edifício Elizabeth Tower,em homenagem ao jubileu de diamante da falecida rainha Elizabeth II. 
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/11.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Tower Bridge</h5>
+                <p class="card-text">1. A Tower Bridge foi inaugurada em 1894, sua construção demorou 8 anos para ser concluída.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/12.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Abadia de Westminster</h5>
+                <p class="card-text">Escolhida como sede para as coroações reais desde 1066.</p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/2.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Museu Britânico</h5>
+                <p class="card-text"> um dos museus mais antigos do mundo e com uma das maiores coleções de antiguidades.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/3.jpg">
+            <div class="card-body">
+                <h5 class="card-title">ST James Park</h5>
+                <p class="card-text">Localizado em frente ao Palácio de Buckingham, foi adquirido em 1532.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/4.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Hyde Park</h5>
+                <p class="card-text">O Hyde Park é o maior parque do centro de Londres. No século XVII se abriu para o público.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/6.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Big Ben</h5>
+                <p class="card-text">A primeira vez que o Big Ben tocou foi em 1859.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/7.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Palácio de Buckingham</h5>
+                <p class="card-text"> Em frente ao palácio acontece a troca de guardas.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="assets/album/9.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Cabine Telefônica</h5>
+                <p class="card-text"> Um dos grandes sí­mbolos de Londres sÃo as cabines.
+                </p>
+                <a href="item.html" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Footer-->
+</main>
+<div class="footer">
+    <footer class="col-11 mx-auto">
+        <h3 class="topic-division">Créditos</h3>
+        <div class="d-flex col-12">
+            <div class=" row col-sm-8 d-flex justify-content-start">
+                <h4 class="col-1">Sobre</h4>
+            </div>
+            <div class=" row col-sm-1 d-flex justify-content-start">
+                <h4 class="col-1">Autoria</h4>
+            </div>
+        </div>
+        <div class=" container-fluid col-sm-12 col-md-12 row">
+            <p class="user-infos ml-3 col-md-8 about">Neste trabalho foi escolhido o tema viagens, e nele sÃo mostrados alguns dos pontos turí­sticos mais importantes da cidade de Londres, na Inglaterra.<br>
+            </p>
+            <img src="assets/css/perfil.jpg" style="width: 150px; height: 150px; ;">
+            <div class="col-2 ml-3">
+                <div class="user-autory row">
+                    <h5>Aluna:&nbsp</h5>
+                    <p>Gabryelle Franco</p>
+                </div>
+                <div class="user-autory row ">
+                    <h5>Curso:&nbsp</h5>
+                    <p>Ciência Da Computação</p>
+                </div>
+                <div class="user-autory row ">
+                    <h5>Turma:&nbsp</h5>
+                    <p>Manhã</p>
+                </div>
+                <div class="user-autory row ">
+                    <h5>Redes Sociais:&nbsp</h5>
+                    <a class="social-medias" href="https://instagram.com/gabryellefranco_"><i><i class="fa-brands fa-instagram"></i></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://kit.fontawesome.com/c0c38a24b2.js" crossorigin="anonymous"></script>
+</body>
+</html>
